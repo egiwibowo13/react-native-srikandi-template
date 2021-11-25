@@ -1,8 +1,8 @@
 {
-    "name": "react-native-template",
-    "version": "0.0.1",
-    "description": "React Native Template",
-    "repository": "git@github.com:egiwibowo13/react-native-template.git",
+    "name": "react-native-srikandi-template",
+    "version": "0.0.2",
+    "description": "React Native Srikandi Template",
+    "repository": "git@github.com:egiwibowo13/react-native-srikandi-template.git",
     "author": "Egi Wibowo <egiwibowo13@gmail.com>",
     "license": "MIT"
   }
