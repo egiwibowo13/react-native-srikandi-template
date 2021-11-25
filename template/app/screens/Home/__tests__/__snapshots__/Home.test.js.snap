@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should render correctly 1`] = `
+<BaseScreen
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+      "padding": 16,
+    }
+  }
+>
+  <RCTScrollView
+    contentInsetAdjustmentBehavior="automatic"
+  >
+    <View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "opacity": 1,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+        >
+          <Icon
+            Icon="IcSun"
+            color="#bbc2d8"
+            size={18}
+          />
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#2E434D",
+              "flex": 1,
+              "fontFamily": "ubuntu-medium",
+              "fontSize": 16,
+              "lineHeight": 21,
+            }
+          }
+        >
+          My Day
+        </Text>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "opacity": 1,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+        >
+          <Icon
+            Icon="IcStar"
+            color="#bbc2d8"
+            size={18}
+          />
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#2E434D",
+              "flex": 1,
+              "fontFamily": "ubuntu-medium",
+              "fontSize": 16,
+              "lineHeight": 21,
+            }
+          }
+        >
+          Important
+        </Text>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "opacity": 1,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+        >
+          <Icon
+            Icon="IcCalendar"
+            color="#bbc2d8"
+            size={18}
+          />
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#2E434D",
+              "flex": 1,
+              "fontFamily": "ubuntu-medium",
+              "fontSize": 16,
+              "lineHeight": 21,
+            }
+          }
+        >
+          Planned
+        </Text>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "opacity": 1,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+        >
+          <Icon
+            Icon="IcTask"
+            color="#bbc2d8"
+            size={18}
+          />
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#2E434D",
+              "flex": 1,
+              "fontFamily": "ubuntu-medium",
+              "fontSize": 16,
+              "lineHeight": 21,
+            }
+          }
+        >
+          Tasks
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#bbc2d8",
+            "height": 1,
+            "marginVertical": 16,
+            "width": "100%",
+          }
+        }
+      />
+      <NudeButton
+        containerStyle={
+          Object {
+            "alignSelf": "flex-end",
+            "justifyContent": "flex-end",
+          }
+        }
+        icon={
+          <Icon
+            Icon="IcPlus"
+            color="#B31E72"
+            size={18}
+          />
+        }
+        onPress={[Function]}
+        title="Add List"
+      />
+    </View>
+  </RCTScrollView>
+</BaseScreen>
+`;
