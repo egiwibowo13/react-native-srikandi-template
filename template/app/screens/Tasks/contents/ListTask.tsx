@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import TabIcon from '@components/TabIcon';
+import {Icon as TabIcon} from '@components/TabIcon';
 import {IcPencilFill, IcCheckLine, IcCloseLine} from '@assets/svgs';
 import {Task} from 'app/redux/categories';
 import {colorBackground, typography} from '@styles/index';

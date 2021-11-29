@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
-import Icon from '@components/TabIcon';
+import {Icon} from '@components/TabIcon';
 import {typography, colorText, colorBackground} from '@styles/index';
 import {IcList} from '@assets/svgs';
 

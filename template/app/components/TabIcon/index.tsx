@@ -1,3 +1,1 @@
-import TabIcon from './TabIcon';
-
-export default TabIcon;
+export * from './TabIcon';

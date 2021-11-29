@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import TabIcon from '@components/TabIcon';
+import {Icon as TabIcon} from '@components/TabIcon';
 import {IcHome, IcUsers} from '@assets/svgs';
 import {MainTabParamList} from './ParamList';
 

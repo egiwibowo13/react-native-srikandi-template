@@ -1,38 +1,90 @@
 import React from 'react';
-import {TouchableOpacity, Text, ViewStyle, View, TextStyle} from 'react-native';
+import {
+  TouchableOpacity,
+  TouchableOpacityProps,
+  ActivityIndicator,
+  ViewStyle,
+  View,
+} from 'react-native';
+import {Theme} from '@styles/theme';
+import {
+  createBox,
+  useTheme,
+  VariantProps,
+  ResponsiveValue,
+  createRestyleComponent,
+  createVariant,
+} from '@shopify/restyle';
+import {Text} from '../Text';
+import {Icon, IconProps} from '../TabIcon';
 import styles from './Button.styles';
 
-export type ButtonProps = {
-  title: string;
-  onPress: () => void;
-  icon?: React.ReactNode;
-  containerStyle?: ViewStyle;
-  titleStyle?: TextStyle;
-  color?: string;
-};
+const BaseButton = createBox<Theme, TouchableOpacityProps>(TouchableOpacity);
 
-export const Button = (props: ButtonProps) => {
-  return (
-    <TouchableOpacity
-      style={[styles.container, props.containerStyle]}
-      onPress={props.onPress}>
-      <Text style={[styles.title, props.titleStyle]}>{props.title}</Text>
-    </TouchableOpacity>
-  );
-};
+const ButtonContainer = createRestyleComponent<
+  VariantProps<Theme, 'buttonVariants'> &
+    React.ComponentProps<typeof BaseButton>,
+  Theme
+>([createVariant({themeKey: 'buttonVariants'})], BaseButton);
 
-export const NudeButton = (props: ButtonProps) => {
+type Props = VariantProps<Theme, 'buttonVariants'> &
+  React.ComponentProps<typeof BaseButton> & {
+    label: string;
+    isLoading?: boolean;
+    disabled?: boolean;
+    containerStyle?: ViewStyle;
+    icon?: React.FC<IconProps>;
+  };
+
+export const Button = ({
+  variant,
+  label,
+  isLoading,
+  disabled,
+  containerStyle,
+  ...props
+}: Props) => {
+  const theme = useTheme<Theme>();
+  let textColor: ResponsiveValue<keyof Theme['colors'], Theme> = 'white';
+  let loadingColor = theme.colors.textPrimary;
+  let styleDisabled = {};
+
+  if (variant === 'primary') {
+    textColor = 'white';
+    loadingColor = theme.colors.white;
+  } else if (variant === 'secondary') {
+    textColor = 'textPrimary';
+    loadingColor = theme.colors.textPrimary;
+  } else if (variant === 'nude') {
+    textColor = 'textPrimary';
+  }
+  if (disabled) {
+    textColor = 'white';
+    loadingColor = theme.colors.white;
+    styleDisabled = {
+      backgroundColor: theme.colors.buttonDisabledBackground,
+      borderWidth: 0,
+    };
+  }
+
   return (
-    <TouchableOpacity
-      style={[
-        {flexDirection: 'row', alignItems: 'center'},
-        props.containerStyle,
-      ]}
-      onPress={props.onPress}>
-      {props.icon && <View style={{marginRight: 8}}>{props.icon}</View>}
-      <Text style={[styles.nudeTitle, props.titleStyle, {color: props.color}]}>
-        {props.title}
+    <ButtonContainer
+      variant={variant}
+      style={[styleDisabled, containerStyle]}
+      {...props}>
+      {props.icon && (
+        <View style={{marginRight: 8}}>
+          <Icon color={loadingColor} size={16} Icon={props.icon} />
+        </View>
+      )}
+      <Text
+        variant={'subtitle'}
+        color={textColor}
+        marginRight={isLoading ? 's' : undefined}
+        style={styles.text}>
+        {label}
       </Text>
-    </TouchableOpacity>
+      {isLoading ? <ActivityIndicator color={loadingColor} animating /> : null}
+    </ButtonContainer>
   );
 };

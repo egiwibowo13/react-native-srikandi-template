@@ -10,8 +10,8 @@
 
 import React, {useState} from 'react';
 import {StyleSheet, View, TextInput, TouchableOpacity} from 'react-native';
-import {NudeButton} from '@components/index';
-import Icon from '@components/TabIcon';
+import {Button} from '@components/index';
+import {Icon} from '@components/TabIcon';
 import {IcArrowUpSquareFill, IcCalendarDay, IcAlarm} from '@assets/svgs';
 import {colorBackground, colorBase, colorText, typography} from '@styles/index';
 
@@ -44,21 +44,20 @@ export const FormCreateTask = (props: FormCreateTaskProps) => {
         </TouchableOpacity>
       </View>
       <View style={styles.containerFooterIcons}>
-        <NudeButton
-          title="Set due date"
-          color={colorText.midnight}
-          titleStyle={styles.textNudeBtn}
-          icon={
-            <Icon Icon={IcCalendarDay} size={18} color={colorText.midnight} />
-          }
+        <Button
+          variant="nude"
+          label="Set due date"
+          // titleStyle={styles.textNudeBtn}
+          icon={IcCalendarDay}
           onPress={() => {}}
         />
-        <NudeButton
-          title="Remind me"
-          color={colorText.midnight}
+        <Button
+          variant="nude"
+          label="Remind me"
+          // color={colorText.midnight}
           containerStyle={{marginLeft: 8}}
-          titleStyle={styles.textNudeBtn}
-          icon={<Icon Icon={IcAlarm} size={18} color={colorText.midnight} />}
+          // titleStyle={styles.textNudeBtn}
+          icon={IcAlarm}
           onPress={() => {}}
         />
       </View>

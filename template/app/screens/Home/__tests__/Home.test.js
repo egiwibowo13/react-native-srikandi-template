@@ -5,7 +5,7 @@ import Home from '../Home';
 
 jest.mock('@components/index', () => ({
   BaseScreen: 'BaseScreen',
-  NudeButton: 'NudeButton',
+  Button: 'Button',
 }));
 jest.mock('@components/TabIcon', () => 'Icon');
 jest.mock('@assets/svgs', () => ({

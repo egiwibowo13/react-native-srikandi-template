@@ -6,8 +6,8 @@ import {Button} from './Button';
 
 storiesOf('Button aswe', module)
   .add('with text', () => (
-    <Button onPress={action('clicked-text')} title={text('title', 'hai')} />
+    <Button onPress={action('clicked-text')} label={text('label', 'hai')} />
   ))
   .add('with some emoji', () => (
-    <Button onPress={action('clicked-text')} title="😀 😎 👍 💯" />
+    <Button onPress={action('clicked-text')} label="😀 😎 👍 💯" />
   ));

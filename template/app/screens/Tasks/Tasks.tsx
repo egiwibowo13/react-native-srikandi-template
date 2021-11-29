@@ -1,7 +1,7 @@
 import React from 'react';
 import {ScrollView, TouchableOpacity} from 'react-native';
-import {BaseScreen, NudeButton} from '@components/index';
-import Icon from '@components/TabIcon';
+import {BaseScreen, Button} from '@components/index';
+import {Icon} from '@components/TabIcon';
 import {IcPlus, IcDeleteFill} from '@assets/svgs';
 import {colorBase, colorBackground} from '@styles/index';
 import {ListTask} from './contents/ListTask';
@@ -43,9 +43,10 @@ export const Tasks = () => {
         title={category?.title ?? ''}
         onSubmit={title => updateTitleCategory(title)}
       />
-      <NudeButton
-        icon={<Icon Icon={IcPlus} size={18} color={colorBase.primary} />}
-        title="Add Task"
+      <Button
+        variant="nude"
+        icon={IcPlus}
+        label="Add Task"
         onPress={() => {
           setShowCreateList(true);
         }}

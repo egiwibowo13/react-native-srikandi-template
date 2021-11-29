@@ -12,8 +12,10 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {store, persistor} from '@appredux/store';
 import {PersistGate} from 'redux-persist/integration/react';
+import {ThemeProvider} from '@shopify/restyle';
 import NavigationContainer from './app/routes/NavigationContainer';
 import StorybookUIRoot from './storybook';
+import theme from '@styles/theme';
 
 const STORYBOOK_START = false;
 
@@ -21,7 +23,9 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <NavigationContainer />
+        <ThemeProvider theme={theme}>
+          <NavigationContainer />
+        </ThemeProvider>
       </PersistGate>
     </Provider>
   );

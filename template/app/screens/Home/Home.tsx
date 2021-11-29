@@ -10,8 +10,8 @@
 
 import React from 'react';
 import {ScrollView, StatusBar, useColorScheme, View} from 'react-native';
-import {BaseScreen, NudeButton} from '@components/index';
-import Icon from '@components/TabIcon';
+import {BaseScreen, Button, Text} from '@components/index';
+import {Icon} from '@components/TabIcon';
 import {IcSun, IcStar, IcTask, IcCalendar, IcPlus} from '@assets/svgs';
 import {colorBackground, colorBase} from '@styles/index';
 import {ListMenu, ListCategory} from './contents/ListMenu';
@@ -76,9 +76,10 @@ function Home() {
           onPress={() => {}}
         />
         <Line />
-        <NudeButton
-          icon={<Icon Icon={IcPlus} size={18} color={colorBase.primary} />}
-          title="Add List"
+        <Button
+          variant="nude"
+          icon={IcPlus}
+          label="Add List"
           onPress={() => {
             setShowCreateList(true);
           }}

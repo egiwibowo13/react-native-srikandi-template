@@ -37,9 +37,10 @@ export const Login = () => {
           />
         </WrapForm>
         <Button
-          title="Login"
-          containerStyle={styles.containerBtn}
+          variant="primary"
+          label="Login"
           onPress={() => formLogin.handleSubmit(onSubmit)}
+          marginTop="m"
         />
       </ScrollableView>
     </BaseScreen>
@@ -62,11 +63,7 @@ export const Basic = () => {
           onChangeText={text => onChangeValue('password', text)}
         />
       </WrapForm>
-      <Button
-        title="Login"
-        containerStyle={styles.containerBtn}
-        onPress={onSubmit}
-      />
+      <Button label="Login" variant="primary" onPress={onSubmit} />
     </BaseScreen>
   );
 };
