@@ -14,7 +14,7 @@ const palette = {
   greyDark: '#59616E',
 
   black: '#0B0B0B',
-  white: '#F5F7FA',
+  white: '#FFFFFF', //'#F5F7FA',
 
   error: '#D42027',
   success: '#4BB543',
@@ -29,14 +29,21 @@ const theme = createTheme({
     mainBackground: palette.white,
     mainForeground: palette.black,
 
+    primary: palette.purplePrimary,
+
     cardPrimaryBackground: palette.purplePrimary,
 
     buttonPrimaryBackground: palette.purplePrimary,
     buttonSecondaryBackground: palette.greyLight,
     buttonDisabledBackground: palette.inactive,
 
+    textInputPrimaryBackground: palette.white,
+    textInputDisabledBackground: palette.greyLight,
+    textInputBorderColor: palette.greyPrimary,
+
     textMidnight: palette.black,
     textPrimary: palette.purplePrimary,
+    textError: palette.error,
     textInactive: palette.inactive,
 
     white: palette.white,
@@ -94,6 +101,7 @@ const theme = createTheme({
     },
   },
   spacing: {
+    xs: 4,
     s: 8,
     m: 16,
     l: 24,
@@ -155,6 +163,28 @@ const theme = createTheme({
       flex: undefined,
       borderRadius: 0,
       backgroundColor: 'transparent',
+    },
+  },
+  textInputVariants: {
+    defaults: {
+      flex: 1,
+      height: 48,
+      paddingHorizontal: 's',
+      alignItems: 'flex-start',
+      justifyContent: 'flex-start',
+      textAlignVertical: 'top',
+      color: 'textMidnight',
+      backgroundColor: 'white',
+    },
+    outlined: {
+      borderWidth: 1,
+      borderRadius: 5,
+      borderColor: 'textInputBorderColor',
+    },
+    flat: {
+      borderBottomWidth: 1,
+      borderRadius: 5,
+      borderBottomColor: 'textInputBorderColor',
     },
   },
 });

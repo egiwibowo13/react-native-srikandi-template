@@ -13,7 +13,7 @@ import {StyleSheet, View, TextInput, TouchableOpacity} from 'react-native';
 import {Button} from '@components/index';
 import {Icon} from '@components/TabIcon';
 import {IcArrowUpSquareFill, IcCalendarDay, IcAlarm} from '@assets/svgs';
-import {colorBackground, colorBase, colorText, typography} from '@styles/index';
+import {colorBackground, colorBase, typography} from '@styles/index';
 
 type FormCreateTaskProps = {
   onSave: (value: string) => void;
@@ -47,16 +47,15 @@ export const FormCreateTask = (props: FormCreateTaskProps) => {
         <Button
           variant="nude"
           label="Set due date"
-          // titleStyle={styles.textNudeBtn}
+          labelStyle={styles.textNudeBtn}
           icon={IcCalendarDay}
           onPress={() => {}}
         />
         <Button
           variant="nude"
           label="Remind me"
-          // color={colorText.midnight}
           containerStyle={{marginLeft: 8}}
-          // titleStyle={styles.textNudeBtn}
+          labelStyle={styles.textNudeBtn}
           icon={IcAlarm}
           onPress={() => {}}
         />

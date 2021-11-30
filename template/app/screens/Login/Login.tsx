@@ -1,10 +1,11 @@
 import React from 'react';
+import {View} from 'react-native';
 import {
-  FieldLabel,
   BaseScreen,
-  WrapForm,
   Button,
   ScrollableView,
+  TextInput,
+  TextInputLayout,
 } from '@components/index';
 import {useLogin, useBasicLogin} from './useLogin';
 import styles from './Login.styles';
@@ -15,27 +16,31 @@ export const Login = () => {
   return (
     <BaseScreen style={styles.container}>
       <ScrollableView ref={formLogin.controller}>
-        <WrapForm
+        <TextInputLayout
           ref={formLogin.refs?.email}
           label="Email"
-          error={formLogin.errors?.email}
-          containerStyle={styles.containerEmail}>
-          <FieldLabel
+          error={formLogin.errors?.email}>
+          <TextInput
+            variant="outlined"
             value={formLogin.values.email}
             onChangeText={formLogin.handleChange('email')}
             onBlur={() => formLogin.handleBlur('email')}
+            isError={!!formLogin.errors?.email}
           />
-        </WrapForm>
-        <WrapForm
+        </TextInputLayout>
+        <View style={{height: 1000, width: '100%'}} />
+        <TextInputLayout
           ref={formLogin.refs?.password}
           label="Password"
           error={formLogin.errors?.password}>
-          <FieldLabel
+          <TextInput
+            variant="outlined"
             value={formLogin.values.password}
             onChangeText={formLogin.handleChange('password')}
             onBlur={() => formLogin.handleBlur('password')}
+            isError={!!formLogin.errors?.password}
           />
-        </WrapForm>
+        </TextInputLayout>
         <Button
           variant="primary"
           label="Login"
@@ -51,18 +56,18 @@ export const Basic = () => {
   const {loginRequest, onChangeValue, onSubmit} = useBasicLogin();
   return (
     <BaseScreen style={styles.container}>
-      <WrapForm label="Email" containerStyle={styles.containerEmail}>
-        <FieldLabel
+      <TextInputLayout label="Email">
+        <TextInput
           value={loginRequest.email}
           onChangeText={text => onChangeValue('email', text)}
         />
-      </WrapForm>
-      <WrapForm label="Password">
-        <FieldLabel
+      </TextInputLayout>
+      <TextInputLayout label="Password">
+        <TextInput
           value={loginRequest.password}
           onChangeText={text => onChangeValue('password', text)}
         />
-      </WrapForm>
+      </TextInputLayout>
       <Button label="Login" variant="primary" onPress={onSubmit} />
     </BaseScreen>
   );

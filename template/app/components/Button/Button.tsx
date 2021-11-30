@@ -4,6 +4,7 @@ import {
   TouchableOpacityProps,
   ActivityIndicator,
   ViewStyle,
+  TextStyle,
   View,
 } from 'react-native';
 import {Theme} from '@styles/theme';
@@ -33,6 +34,7 @@ type Props = VariantProps<Theme, 'buttonVariants'> &
     isLoading?: boolean;
     disabled?: boolean;
     containerStyle?: ViewStyle;
+    labelStyle?: TextStyle;
     icon?: React.FC<IconProps>;
   };
 
@@ -42,6 +44,7 @@ export const Button = ({
   isLoading,
   disabled,
   containerStyle,
+  labelStyle,
   ...props
 }: Props) => {
   const theme = useTheme<Theme>();
@@ -81,7 +84,7 @@ export const Button = ({
         variant={'subtitle'}
         color={textColor}
         marginRight={isLoading ? 's' : undefined}
-        style={styles.text}>
+        style={[styles.text, labelStyle]}>
         {label}
       </Text>
       {isLoading ? <ActivityIndicator color={loadingColor} animating /> : null}
