@@ -9,18 +9,15 @@
  */
 
 import React from 'react';
-import {ScrollView, StatusBar, useColorScheme, View} from 'react-native';
-import {BaseScreen, Button, Text} from '@components/index';
+import {StatusBar, useColorScheme} from 'react-native';
+import {BaseScreen, Button, ScrollableView, Line} from '@components/index';
 import {Icon} from '@components/TabIcon';
 import {IcSun, IcStar, IcTask, IcCalendar, IcPlus} from '@assets/svgs';
-import {colorBackground, colorBase} from '@styles/index';
 import {ListMenu, ListCategory} from './contents/ListMenu';
 import {FormCreateTask} from './contents/FormCreateTask';
 import {Menu} from './Home.model';
 import {useHome} from './useHome';
 import styles from './Home.styles';
-
-const Line = () => <View style={styles.line} />;
 
 Home.dependencies = {
   useActions: useHome,
@@ -37,45 +34,35 @@ function Home() {
   return (
     <BaseScreen style={styles.container}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <ScrollableView contentInsetAdjustmentBehavior="automatic">
         <ListMenu
           data={[
-            // {
-            //   title: Menu.MY_DAY,
-            //   leftIcon: (
-            //     <Icon Icon={IcSun} size={18} color={colorBackground.grey} />
-            //   ),
-            //   count: 0,
-            // },
-            // {
-            //   title: Menu.IMPORTANT,
-            //   leftIcon: (
-            //     <Icon Icon={IcStar} size={18} color={colorBackground.grey} />
-            //   ),
-            //   count: 0,
-            // },
-            // {
-            //   title: Menu.PLANNED,
-            //   leftIcon: (
-            //     <Icon
-            //       Icon={IcCalendar}
-            //       size={18}
-            //       color={colorBackground.grey}
-            //     />
-            //   ),
-            //   count: 0,
-            // },
-            // {
-            //   title: Menu.TASKS,
-            //   leftIcon: (
-            //     <Icon Icon={IcTask} size={18} color={colorBackground.grey} />
-            //   ),
-            //   count: 0,
-            // },
+            {
+              title: Menu.MY_DAY,
+              leftIcon: <Icon Icon={IcSun} size={18} color={'greyPrimary'} />,
+              count: 0,
+            },
+            {
+              title: Menu.IMPORTANT,
+              leftIcon: <Icon Icon={IcStar} size={18} color={'greyPrimary'} />,
+              count: 0,
+            },
+            {
+              title: Menu.PLANNED,
+              leftIcon: (
+                <Icon Icon={IcCalendar} size={18} color={'greyPrimary'} />
+              ),
+              count: 0,
+            },
+            {
+              title: Menu.TASKS,
+              leftIcon: <Icon Icon={IcTask} size={18} color={'greyPrimary'} />,
+              count: 0,
+            },
           ]}
           onPress={() => {}}
         />
-        <Line />
+        <Line marginVertical="m" />
         <Button
           variant="nude"
           icon={IcPlus}
@@ -95,7 +82,7 @@ function Home() {
           })}
           onPress={category => onPressCategoryItem({id: category.id})}
         />
-      </ScrollView>
+      </ScrollableView>
       {showFormCreateList && <FormCreateTask onSave={onAddCategory} />}
     </BaseScreen>
   );

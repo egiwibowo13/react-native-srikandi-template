@@ -10,15 +10,17 @@
 
 import React, {useState} from 'react';
 import {StyleSheet, TextInput} from 'react-native';
+import {Theme} from '@styles/theme';
+import {useTheme} from '@shopify/restyle';
 import {Button, HorizontalBox, VerticalBox, Icon} from '@components/index';
 import {IcArrowUpSquareFill, IcCalendarDay, IcAlarm} from '@assets/svgs';
-import {typography} from '@styles/index';
 
 type FormCreateTaskProps = {
   onSave: (value: string) => void;
 };
 
 export const FormCreateTask = (props: FormCreateTaskProps) => {
+  const theme = useTheme<Theme>();
   const [value, setValue] = useState<string>('');
   return (
     <VerticalBox
@@ -33,7 +35,6 @@ export const FormCreateTask = (props: FormCreateTaskProps) => {
           autoFocus
           style={styles.txtInput}
         />
-
         <Icon
           marginLeft="m"
           onPress={() => {
@@ -49,7 +50,7 @@ export const FormCreateTask = (props: FormCreateTaskProps) => {
         <Button
           variant="nude"
           label="Set due date"
-          labelStyle={styles.textNudeBtn}
+          labelStyle={theme.textVariants.caption}
           icon={IcCalendarDay}
           onPress={() => {}}
         />
@@ -57,7 +58,7 @@ export const FormCreateTask = (props: FormCreateTaskProps) => {
           variant="nude"
           label="Remind me"
           marginLeft="s"
-          labelStyle={styles.textNudeBtn}
+          labelStyle={theme.textVariants.caption}
           icon={IcAlarm}
           onPress={() => {}}
         />
@@ -71,8 +72,5 @@ const styles = StyleSheet.create({
     height: 24,
     flex: 1,
     padding: 0,
-  },
-  textNudeBtn: {
-    ...typography.caption,
   },
 });
