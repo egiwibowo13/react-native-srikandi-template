@@ -1,5 +1,4 @@
 import React from 'react';
-import {View} from 'react-native';
 import {
   BaseScreen,
   Button,
@@ -7,6 +6,7 @@ import {
   TextInput,
   TextInputLayout,
 } from '@components/index';
+import {IcAlarm} from '@assets/svgs';
 import {useLogin, useBasicLogin} from './useLogin';
 import styles from './Login.styles';
 
@@ -28,7 +28,6 @@ export const Login = () => {
             isError={!!formLogin.errors?.email}
           />
         </TextInputLayout>
-        <View style={{height: 1000, width: '100%'}} />
         <TextInputLayout
           ref={formLogin.refs?.password}
           label="Password"
@@ -42,8 +41,10 @@ export const Login = () => {
           />
         </TextInputLayout>
         <Button
-          variant="primary"
+          variant="secondary"
+          icon={IcAlarm}
           label="Login"
+          isLoading
           onPress={() => formLogin.handleSubmit(onSubmit)}
           marginTop="m"
         />

@@ -5,7 +5,6 @@ import {
   ActivityIndicator,
   ViewStyle,
   TextStyle,
-  View,
 } from 'react-native';
 import {Theme} from '@styles/theme';
 import {
@@ -15,18 +14,25 @@ import {
   ResponsiveValue,
   createRestyleComponent,
   createVariant,
+  spacing,
+  layout,
+  SpacingProps,
+  LayoutProps,
 } from '@shopify/restyle';
 import {Text} from '../Text';
-import {Icon, IconProps} from '../TabIcon';
-import styles from './Button.styles';
+import {Icon, IconSvgProps} from '../TabIcon';
 
-const BaseButton = createBox<Theme, TouchableOpacityProps>(TouchableOpacity);
+export const BaseButton = createBox<Theme, TouchableOpacityProps>(
+  TouchableOpacity,
+);
 
 const ButtonContainer = createRestyleComponent<
   VariantProps<Theme, 'buttonVariants'> &
+    SpacingProps<Theme> &
+    LayoutProps<Theme> &
     React.ComponentProps<typeof BaseButton>,
   Theme
->([createVariant({themeKey: 'buttonVariants'})], BaseButton);
+>([createVariant({themeKey: 'buttonVariants'}), spacing, layout], BaseButton);
 
 type Props = VariantProps<Theme, 'buttonVariants'> &
   React.ComponentProps<typeof BaseButton> & {
@@ -35,7 +41,7 @@ type Props = VariantProps<Theme, 'buttonVariants'> &
     disabled?: boolean;
     containerStyle?: ViewStyle;
     labelStyle?: TextStyle;
-    icon?: React.FC<IconProps>;
+    icon?: React.FC<IconSvgProps>;
   };
 
 export const Button = ({
@@ -49,7 +55,7 @@ export const Button = ({
 }: Props) => {
   const theme = useTheme<Theme>();
   let textColor: ResponsiveValue<keyof Theme['colors'], Theme> = 'white';
-  let loadingColor = theme.colors.textPrimary;
+  let loadingColor = theme.colors.white;
   let styleDisabled = {};
 
   if (variant === 'primary') {
@@ -60,6 +66,7 @@ export const Button = ({
     loadingColor = theme.colors.textPrimary;
   } else if (variant === 'nude') {
     textColor = 'textPrimary';
+    loadingColor = theme.colors.textPrimary;
   }
   if (disabled) {
     textColor = 'white';
@@ -76,15 +83,19 @@ export const Button = ({
       style={[styleDisabled, containerStyle]}
       {...props}>
       {props.icon && (
-        <View style={{marginRight: 8}}>
-          <Icon color={loadingColor} size={16} Icon={props.icon} />
-        </View>
+        <Icon
+          color={textColor}
+          size={16}
+          Icon={props.icon}
+          marginRight="s"
+          alignSelf="center"
+        />
       )}
       <Text
         variant={'subtitle'}
         color={textColor}
         marginRight={isLoading ? 's' : undefined}
-        style={[styles.text, labelStyle]}>
+        style={[labelStyle]}>
         {label}
       </Text>
       {isLoading ? <ActivityIndicator color={loadingColor} animating /> : null}

@@ -40,38 +40,38 @@ function Home() {
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <ListMenu
           data={[
-            {
-              title: Menu.MY_DAY,
-              leftIcon: (
-                <Icon Icon={IcSun} size={18} color={colorBackground.grey} />
-              ),
-              count: 0,
-            },
-            {
-              title: Menu.IMPORTANT,
-              leftIcon: (
-                <Icon Icon={IcStar} size={18} color={colorBackground.grey} />
-              ),
-              count: 0,
-            },
-            {
-              title: Menu.PLANNED,
-              leftIcon: (
-                <Icon
-                  Icon={IcCalendar}
-                  size={18}
-                  color={colorBackground.grey}
-                />
-              ),
-              count: 0,
-            },
-            {
-              title: Menu.TASKS,
-              leftIcon: (
-                <Icon Icon={IcTask} size={18} color={colorBackground.grey} />
-              ),
-              count: 0,
-            },
+            // {
+            //   title: Menu.MY_DAY,
+            //   leftIcon: (
+            //     <Icon Icon={IcSun} size={18} color={colorBackground.grey} />
+            //   ),
+            //   count: 0,
+            // },
+            // {
+            //   title: Menu.IMPORTANT,
+            //   leftIcon: (
+            //     <Icon Icon={IcStar} size={18} color={colorBackground.grey} />
+            //   ),
+            //   count: 0,
+            // },
+            // {
+            //   title: Menu.PLANNED,
+            //   leftIcon: (
+            //     <Icon
+            //       Icon={IcCalendar}
+            //       size={18}
+            //       color={colorBackground.grey}
+            //     />
+            //   ),
+            //   count: 0,
+            // },
+            // {
+            //   title: Menu.TASKS,
+            //   leftIcon: (
+            //     <Icon Icon={IcTask} size={18} color={colorBackground.grey} />
+            //   ),
+            //   count: 0,
+            // },
           ]}
           onPress={() => {}}
         />

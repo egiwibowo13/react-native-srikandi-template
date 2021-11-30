@@ -1,5 +1,6 @@
 import React from 'react';
-import {Text, StyleSheet, TextInput} from 'react-native';
+import {StyleSheet, TextInput} from 'react-native';
+import {Text} from '@components/index';
 import {typography} from '@styles/index';
 
 type TitleCategoryProps = {
@@ -22,16 +23,13 @@ export const TitleCategory = (props: TitleCategoryProps) => {
     );
   }
   return (
-    <Text style={styles.title} onPress={() => setIsEdit(true)}>
+    <Text variant="subtitle" onPress={() => setIsEdit(true)}>
       {titleEdited}
     </Text>
   );
 };
 
 const styles = StyleSheet.create({
-  title: {
-    ...typography.subtitle,
-  },
   textInput: {
     ...typography.subtitle,
   },

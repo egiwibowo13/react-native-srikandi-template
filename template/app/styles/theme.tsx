@@ -31,6 +31,8 @@ const theme = createTheme({
 
     primary: palette.purplePrimary,
 
+    greyPrimary: palette.greyPrimary,
+
     cardPrimaryBackground: palette.purplePrimary,
 
     buttonPrimaryBackground: palette.purplePrimary,
@@ -47,6 +49,9 @@ const theme = createTheme({
     textInactive: palette.inactive,
 
     white: palette.white,
+
+    success: palette.success,
+    error: palette.error,
 
     transparent: palette.transparent,
   },

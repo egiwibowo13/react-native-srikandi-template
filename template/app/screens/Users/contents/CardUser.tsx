@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Text, Image, View} from 'react-native';
+import {StyleSheet, Image} from 'react-native';
+import {Text, BaseButton, VerticalBox} from '@components/index';
 import {UserView} from '../Users.model';
-import {typography} from '../../../styles';
 
 type CardUserProps = {
   onPress: () => void;
@@ -10,27 +10,19 @@ type CardUserProps = {
 
 export const CardUser = (props: CardUserProps) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={props.onPress}>
+    <BaseButton flexDirection="row" paddingVertical="s" onPress={props.onPress}>
       <Image style={styles.image} source={{uri: props.user.avatar}} />
-      <View>
-        <Text style={styles.text}>{props.user.fullname}</Text>
-        <Text style={styles.text}>{props.user.email}</Text>
-      </View>
-    </TouchableOpacity>
+      <VerticalBox marginLeft="s">
+        <Text variant="body2">{props.user.fullname}</Text>
+        <Text variant="body2">{props.user.email}</Text>
+      </VerticalBox>
+    </BaseButton>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    paddingVertical: 8,
-  },
   image: {
     width: 40,
     height: 60,
-  },
-  text: {
-    ...typography.body2,
-    marginLeft: 8,
   },
 });

@@ -29,7 +29,7 @@ export function useLogin() {
   });
 
   async function onSubmit(params: SubmitParams<LoginRequest>) {
-    // AuthHelper.loggedin();
+    AuthHelper.loggedin();
     if (params.isValid) {
       try {
         await authUseCase.login(params.values, loginToken.token);

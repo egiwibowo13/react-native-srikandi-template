@@ -1,7 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
-import {Icon} from '@components/TabIcon';
-import {typography, colorText, colorBackground} from '@styles/index';
+import {Text, VerticalBox, BaseButton, Icon} from '@components/index';
 import {IcList} from '@assets/svgs';
 
 type MenuItemProps = {
@@ -18,13 +16,21 @@ export const MenuItem = ({
   onPress: () => void;
 }) => {
   return (
-    <TouchableOpacity style={styles.containerItem} onPress={onPress}>
+    <BaseButton
+      flexDirection="row"
+      alignItems="center"
+      paddingVertical="s"
+      onPress={onPress}>
       {item.leftIcon !== null && (
-        <View style={styles.containerIcon}>{item.leftIcon}</View>
+        <VerticalBox marginRight="s">{item.leftIcon}</VerticalBox>
       )}
-      <Text style={styles.title}>{item.title}</Text>
-      {item.count > 0 && <Text style={styles.count}>{`${item.count}`}</Text>}
-    </TouchableOpacity>
+      <Text variant="subtitle" flex={1}>
+        {item.title}
+      </Text>
+      {item.count > 0 && (
+        <Text variant="subtitle" color="greyPrimary">{`${item.count}`}</Text>
+      )}
+    </BaseButton>
   );
 };
 
@@ -65,9 +71,7 @@ export const ListCategory = ({
             key={index}
             item={{
               title: category.title,
-              leftIcon: (
-                <Icon Icon={IcList} size={18} color={colorBackground.grey} />
-              ),
+              leftIcon: <Icon Icon={IcList} size={18} color={'greyPrimary'} />,
               count: category.count,
             }}
             onPress={() => onPress(category)}
@@ -77,28 +81,3 @@ export const ListCategory = ({
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  containerItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 8,
-  },
-  containerIcon: {
-    marginRight: 8,
-  },
-  textComplete: {
-    ...typography.body2,
-    textDecorationLine: 'line-through',
-  },
-  title: {
-    ...typography.subtitle,
-    flex: 1,
-  },
-  count: {
-    ...typography.subtitle,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    color: colorText.inactive,
-  },
-});

@@ -9,11 +9,10 @@
  */
 
 import React, {useState} from 'react';
-import {StyleSheet, View, TextInput, TouchableOpacity} from 'react-native';
-import {Button} from '@components/index';
-import {Icon} from '@components/TabIcon';
+import {StyleSheet, TextInput} from 'react-native';
+import {Button, HorizontalBox, VerticalBox, Icon} from '@components/index';
 import {IcArrowUpSquareFill, IcCalendarDay, IcAlarm} from '@assets/svgs';
-import {colorBackground, colorBase, typography} from '@styles/index';
+import {typography} from '@styles/index';
 
 type FormCreateTaskProps = {
   onSave: (value: string) => void;
@@ -22,28 +21,31 @@ type FormCreateTaskProps = {
 export const FormCreateTask = (props: FormCreateTaskProps) => {
   const [value, setValue] = useState<string>('');
   return (
-    <View style={styles.container}>
-      <View style={styles.rowCenter}>
+    <VerticalBox
+      borderTopWidth={0.5}
+      borderTopColor="primary"
+      width="100%"
+      paddingVertical="s">
+      <HorizontalBox alignItems="center">
         <TextInput
           value={value}
           onChangeText={setValue}
           autoFocus
           style={styles.txtInput}
         />
-        <TouchableOpacity
-          style={styles.containerSendIcon}
+
+        <Icon
+          marginLeft="m"
           onPress={() => {
             props.onSave(value);
             setValue('');
-          }}>
-          <Icon
-            Icon={IcArrowUpSquareFill}
-            size={20}
-            color={colorBase.primary}
-          />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.containerFooterIcons}>
+          }}
+          Icon={IcArrowUpSquareFill}
+          size={18}
+          color="primary"
+        />
+      </HorizontalBox>
+      <HorizontalBox marginTop="s">
         <Button
           variant="nude"
           label="Set due date"
@@ -54,39 +56,21 @@ export const FormCreateTask = (props: FormCreateTaskProps) => {
         <Button
           variant="nude"
           label="Remind me"
-          containerStyle={{marginLeft: 8}}
+          marginLeft="s"
           labelStyle={styles.textNudeBtn}
           icon={IcAlarm}
           onPress={() => {}}
         />
-      </View>
-    </View>
+      </HorizontalBox>
+    </VerticalBox>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    borderTopWidth: 0.5,
-    borderTopColor: colorBackground.grey,
-    width: '100%',
-    paddingVertical: 8,
-    bottom: 0,
-  },
-  rowCenter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   txtInput: {
     height: 24,
     flex: 1,
     padding: 0,
-  },
-  containerFooterIcons: {
-    flexDirection: 'row',
-    marginTop: 8,
-  },
-  containerSendIcon: {
-    marginLeft: 16,
   },
   textNudeBtn: {
     ...typography.caption,

@@ -6,3 +6,4 @@ export * from './Form';
 export * from './Text';
 export * from './Card';
 export * from './Box';
+export * from './TabIcon';

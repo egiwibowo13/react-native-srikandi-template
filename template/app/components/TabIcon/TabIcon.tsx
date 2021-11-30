@@ -1,19 +1,54 @@
 import React from 'react';
+import {TouchableOpacityProps, TouchableOpacity} from 'react-native';
+import {Theme} from '@styles/theme';
+import {
+  createBox,
+  spacing,
+  ColorProps,
+  useRestyle,
+  color,
+  useTheme,
+} from '@shopify/restyle';
 
-export interface IconProps {
-  fill: string;
+const BaseButton = createBox<Theme, TouchableOpacityProps>(TouchableOpacity);
+
+export interface IconSvgProps {
+  fill: any;
   width: number;
   height: number;
 }
 
-interface TabIconProps {
-  color: string;
-  size: number;
-  Icon: React.FC<IconProps>;
-}
+type IconProps = React.ComponentProps<typeof BaseButton> &
+  ColorProps<Theme> & {
+    onPress?: () => void;
+    size: number;
+    Icon: React.FC<IconSvgProps>;
+  };
 
-export const Icon: React.FC<TabIconProps> = ({color, size, Icon}) => {
-  return <Icon fill={color} width={size} height={size} />;
+export const Icon: React.FC<IconProps> = ({
+  size,
+  Icon: IconSvg,
+  onPress,
+  ...rest
+}) => {
+  const restyleProps: any = useRestyle([color, spacing], rest);
+  const theme = useTheme<Theme>();
+  const getFill = () => {
+    if (restyleProps.style !== undefined && restyleProps?.style?.length > 0) {
+      return restyleProps.style[0].color;
+    } else {
+      return theme.colors.primary;
+    }
+  };
+  return (
+    <BaseButton
+      disabled={typeof onPress !== 'function'}
+      onPress={onPress}
+      alignSelf="flex-start"
+      {...restyleProps}>
+      <IconSvg fill={getFill()} width={size} height={size} />
+    </BaseButton>
+  );
 };
 
 export default Icon;

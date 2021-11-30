@@ -1,9 +1,7 @@
 import React from 'react';
-import {ScrollView, TouchableOpacity} from 'react-native';
-import {BaseScreen, Button} from '@components/index';
-import {Icon} from '@components/TabIcon';
+import {ScrollView} from 'react-native';
+import {BaseScreen, Button, Icon} from '@components/index';
 import {IcPlus, IcDeleteFill} from '@assets/svgs';
-import {colorBase, colorBackground} from '@styles/index';
 import {ListTask} from './contents/ListTask';
 import {FormCreateTask} from '../Home/contents/FormCreateTask';
 import {TitleCategory} from './contents/TitleCategory';
@@ -27,11 +25,14 @@ export const Tasks = () => {
     navigation.setOptions({
       headerRight: () => {
         return (
-          <TouchableOpacity
-            style={styles.containerBtnDelete}
-            onPress={onPressDeleteCategory}>
-            <Icon Icon={IcDeleteFill} size={18} color={colorBackground.error} />
-          </TouchableOpacity>
+          <Icon
+            Icon={IcDeleteFill}
+            size={18}
+            color={'error'}
+            onPress={onPressDeleteCategory}
+            marginRight="s"
+            alignSelf="flex-end"
+          />
         );
       },
     });
