@@ -70,6 +70,12 @@ function Home() {
           icon={IcPlus}
           label="Add List"
           onPress={() => {
+            baseScreen.current?.showSnackBar({
+              text: 'selamat anda berhasil login',
+              buttonText: 'OK',
+              duration: 10000,
+              type: 'success',
+            });
             setShowCreateList(true);
           }}
           containerStyle={styles.containerBtn}

@@ -22,11 +22,11 @@ export type SnackBarActionsParams = {
   onPress?: () => void;
 };
 
-export type SnackBarHandle = {
+export type SnackBar = {
   show: (params: SnackBarActionsParams) => void;
 };
 
-export const SnackBar = React.forwardRef<SnackBarHandle, any>((props, ref) => {
+export const SnackBar = React.forwardRef<SnackBar, any>((props, ref) => {
   const theme = useTheme<Theme>();
   const [visible, setVisible] = useState<boolean>(false);
   const [text, setText] = useState<string>('');
