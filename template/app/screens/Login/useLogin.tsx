@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 import {LoginRequest} from '@data/model/LoginModel';
 import NotifyService from '@services/Notify';
@@ -7,7 +7,7 @@ import {colorBackground} from '@styles/index';
 import {AuthUseCase} from '@domain/AuthUseCase';
 import {LoginNavigator} from './Login.navigator';
 import {loginSchema} from './Login.model';
-import {useForm, SubmitParams} from '@components/index';
+import {useForm, SubmitParams, BaseScreen} from '@components/index';
 
 useLogin.dependencies = {
   navigator: LoginNavigator,
@@ -18,6 +18,7 @@ export function useLogin() {
   const {authUseCase} = useLogin.dependencies;
 
   const loginToken = axios.CancelToken.source();
+  const baseScreen = useRef<BaseScreen>(null);
 
   const formLogin = useForm<LoginRequest>({
     initialValues: {
@@ -34,11 +35,20 @@ export function useLogin() {
       try {
         await authUseCase.login(params.values, loginToken.token);
         AuthHelper.loggedin();
+        baseScreen.current?.showSnackBar({
+          text: 'selamat anda berhasil login',
+          buttonText: 'OK',
+          duration: 3000,
+          type: 'success',
+        });
       } catch (error) {
-        console.log({error});
-        NotifyService.sendNotify({
-          textMessage: 'Silahkan Coba Lagi',
-          bgColor: colorBackground.error,
+        baseScreen.current?.showSnackBar({
+          text: 'Silahkan coba lagi',
+          buttonText: 'Try Again',
+          type: 'error',
+          onPress: () => {
+            formLogin.handleSubmit(onSubmit);
+          },
         });
       }
     }
@@ -51,8 +61,14 @@ export function useLogin() {
   }, [loginToken]);
 
   return {
-    formLogin,
-    onSubmit,
+    actions: {
+      onSubmit,
+    },
+    data: {},
+    bind: {
+      formLogin,
+      baseScreen,
+    },
   };
 }
 

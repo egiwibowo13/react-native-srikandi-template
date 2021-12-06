@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useRef} from 'react';
 import {StatusBar, useColorScheme} from 'react-native';
 import {BaseScreen, Button, ScrollableView, Line} from '@components/index';
 import {Icon} from '@components/TabIcon';
@@ -31,8 +31,10 @@ function Home() {
   const {setShowCreateList, onAddCategory, onPressCategoryItem} = actions;
   const {categories} = data;
 
+  const baseScreen = useRef<BaseScreen>(null);
+
   return (
-    <BaseScreen style={styles.container}>
+    <BaseScreen style={styles.container} ref={baseScreen}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollableView contentInsetAdjustmentBehavior="automatic">
         <ListMenu

@@ -22,16 +22,19 @@ const palette = {
   inactive: '#808C92',
 
   transparent: 'transparent',
+
+  mainBackground: '#FDFDFD',
 };
 
 const theme = createTheme({
   colors: {
-    mainBackground: palette.white,
+    mainBackground: palette.mainBackground,
     mainForeground: palette.black,
 
     primary: palette.purplePrimary,
 
     greyPrimary: palette.greyPrimary,
+    greyDark: palette.greyDark,
 
     cardPrimaryBackground: palette.purplePrimary,
 
@@ -52,6 +55,7 @@ const theme = createTheme({
 
     success: palette.success,
     error: palette.error,
+    warning: palette.warning,
 
     transparent: palette.transparent,
   },

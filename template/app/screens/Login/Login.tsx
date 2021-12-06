@@ -6,15 +6,16 @@ import {
   TextInput,
   TextInputLayout,
 } from '@components/index';
-import {IcAlarm} from '@assets/svgs';
 import {useLogin, useBasicLogin} from './useLogin';
 import styles from './Login.styles';
 
 export const Login = () => {
-  const {onSubmit, formLogin} = useLogin();
+  const {actions, bind} = useLogin();
+  const {onSubmit} = actions;
+  const {formLogin, baseScreen} = bind;
 
   return (
-    <BaseScreen style={styles.container}>
+    <BaseScreen style={styles.container} ref={baseScreen}>
       <ScrollableView ref={formLogin.controller}>
         <TextInputLayout
           ref={formLogin.refs?.email}
@@ -41,11 +42,11 @@ export const Login = () => {
           />
         </TextInputLayout>
         <Button
-          variant="secondary"
-          icon={IcAlarm}
+          variant="primary"
           label="Login"
-          isLoading
-          onPress={() => formLogin.handleSubmit(onSubmit)}
+          onPress={() => {
+            formLogin.handleSubmit(onSubmit);
+          }}
           marginTop="m"
         />
       </ScrollableView>
