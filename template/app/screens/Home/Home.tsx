@@ -9,7 +9,6 @@
  */
 
 import React, {useRef} from 'react';
-import {StatusBar, useColorScheme} from 'react-native';
 import {BaseScreen, Button, ScrollableView, Line} from '@components/index';
 import {Icon} from '@components/TabIcon';
 import {IcSun, IcStar, IcTask, IcCalendar, IcPlus} from '@assets/svgs';
@@ -25,7 +24,6 @@ Home.dependencies = {
 
 function Home() {
   const {useActions} = Home.dependencies;
-  const isDarkMode = useColorScheme() === 'dark';
   const {state, actions, data} = useActions();
   const {showFormCreateList} = state;
   const {setShowCreateList, onAddCategory, onPressCategoryItem} = actions;
@@ -35,7 +33,6 @@ function Home() {
 
   return (
     <BaseScreen style={styles.container} ref={baseScreen}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollableView contentInsetAdjustmentBehavior="automatic">
         <ListMenu
           data={[
