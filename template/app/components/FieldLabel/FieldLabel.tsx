@@ -10,8 +10,10 @@ import {
   createBox,
   SpacingProps,
   ColorProps,
+  LayoutProps,
   spacing,
   color,
+  layout,
 } from '@shopify/restyle';
 
 const Box = createBox<Theme>();
@@ -20,10 +22,11 @@ const Text = createText<Theme>();
 type BaseTextInputProps = VariantProps<Theme, 'textInputVariants'> &
   React.ComponentProps<typeof RNTextInput> &
   SpacingProps<Theme> &
+  LayoutProps<Theme> &
   ColorProps<Theme>;
 
 export const BaseTextInput = createRestyleComponent<BaseTextInputProps, Theme>(
-  [createVariant({themeKey: 'textInputVariants'}), spacing, color],
+  [createVariant({themeKey: 'textInputVariants'}), spacing, layout, color],
   RNTextInput,
 );
 
@@ -32,7 +35,7 @@ type TextInputProps = BaseTextInputProps & {
   isError?: boolean;
 };
 export const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
-  const {variant, editable = true, isError} = props;
+  const {variant, editable = true, isError, style, ...rest} = props;
   const theme = useTheme<Theme>();
   const styleLayout = [];
   if (!editable) {
@@ -49,7 +52,13 @@ export const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
     });
   }
   return (
-    <BaseTextInput ref={ref} variant={variant} {...props} style={styleLayout} />
+    <BaseTextInput
+      ref={ref}
+      variant={variant}
+      editable={editable}
+      {...rest}
+      style={[...styleLayout, style]}
+    />
   );
 });
 

@@ -87,25 +87,25 @@ const theme = createTheme({
     body: {
       color: 'textMidnight',
       lineHeight: 21,
-      fontFamily: 'ubuntu-medium',
+      fontFamily: 'ubuntu-light',
       fontSize: 16,
     },
     body2: {
       color: 'textMidnight',
       lineHeight: 21,
-      fontFamily: 'ubuntu-medium',
+      fontFamily: 'ubuntu-light',
       fontSize: 14,
     },
     caption: {
       color: 'textMidnight',
       lineHeight: 18,
-      fontFamily: 'ubuntu-medium',
+      fontFamily: 'ubuntu-light',
       fontSize: 12,
     },
     overline: {
       color: 'textMidnight',
       lineHeight: 15,
-      fontFamily: 'ubuntu-medium',
+      fontFamily: 'ubuntu-light',
       fontSize: 10,
     },
   },
@@ -147,7 +147,7 @@ const theme = createTheme({
   buttonVariants: {
     defaults: {
       alignSelf: 'flex-start',
-      flex: 1,
+      // flex: 1,
       width: '100%',
       height: 48,
       borderRadius: 5,

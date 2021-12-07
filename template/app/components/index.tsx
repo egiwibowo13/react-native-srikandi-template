@@ -6,3 +6,5 @@ export * from './Text';
 export * from './Card';
 export * from './Box';
 export * from './TabIcon';
+export * from './Otp';
+export * from './Countdown';
